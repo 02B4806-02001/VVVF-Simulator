@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="VvvfSimulator.GUI.Resource.MyUserControl.EnableButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converter="clr-namespace:VvvfSimulator.GUI.Resource.Converter"
+             xmlns:local="clr-namespace:VvvfSimulator.GUI.Resource.MyUserControl"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="500">
+
+    <UserControl.Resources>
+        <converter:HalfConverter x:Key="HalfConverter"/>
+        <system:Double x:Key="ButtonDotMargin">5.0</system:Double>
+    </UserControl.Resources>
+
+    <Grid Height="Auto" MouseUp="Grid_MouseUp" MouseDown="Grid_MouseDown" MouseLeave="Grid_MouseLeave" >
+        <Border x:Name="Button" CornerRadius="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfConverter}}">
+            <Border.Background>
+                <SolidColorBrush Color="{DynamicResource EnableSwitchBackColorEnabled}"/>
+            </Border.Background>
+            <Ellipse x:Name="ButtonDot" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Stretch" Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="{DynamicResource EnableSwitchForeColorEnabled}"/>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Border>
+    </Grid>
+</UserControl>

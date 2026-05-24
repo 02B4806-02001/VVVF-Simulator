@@ -1,0 +1,536 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+		<RootNamespace>VvvfSimulator</RootNamespace>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<ApplicationIcon>GUI/Resource/Images/vvvf-simulator.ico</ApplicationIcon>
+		<Authors>VvvfGeeks</Authors>
+		<Description>A simple application to simulate VVVF sound</Description>
+		<PackageIcon>vvvf-simulator.png</PackageIcon>
+		<AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+		<AssemblyVersion>1.9.2.0</AssemblyVersion>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<StartupObject>VvvfSimulator.App</StartupObject>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Resource Include="GUI\Resource\Fonts\BIZ_UDPGothic\BIZUDPGothic-Bold.ttf" />
+		<Resource Include="GUI\Resource\Fonts\BIZ_UDPGothic\BIZUDPGothic-Regular.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG14-Classic\DSEG14Classic-Bold.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG14-Classic\DSEG14Classic-BoldItalic.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG14-Classic\DSEG14Classic-Italic.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG14-Classic\DSEG14Classic-Light.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG14-Classic\DSEG14Classic-LightItalic.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG14-Classic\DSEG14Classic-Regular.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG14-Modern\DSEG14Modern-Bold.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG14-Modern\DSEG14Modern-BoldItalic.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG14-Modern\DSEG14Modern-Italic.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG14-Modern\DSEG14Modern-Light.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG14-Modern\DSEG14Modern-LightItalic.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG14-Modern\DSEG14Modern-Regular.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG7-Classic\DSEG7Classic-Bold.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG7-Classic\DSEG7Classic-BoldItalic.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG7-Classic\DSEG7Classic-Italic.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG7-Classic\DSEG7Classic-Light.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG7-Classic\DSEG7Classic-LightItalic.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG7-Classic\DSEG7Classic-Regular.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG7-Modern\DSEG7Modern-Bold.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG7-Modern\DSEG7Modern-BoldItalic.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG7-Modern\DSEG7Modern-Italic.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG7-Modern\DSEG7Modern-Light.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG7-Modern\DSEG7Modern-LightItalic.ttf" />
+		<Resource Include="GUI\Resource\Fonts\fonts-DSEG_v046\DSEG7-Modern\DSEG7Modern-Regular.ttf" />
+		<Resource Include="GUI\Resource\Fonts\Fugaz_One\FugazOne-Regular.ttf" />
+		<Resource Include="GUI\Resource\Fonts\Gasoek_One\GasoekOne-Regular.ttf" />
+       <Resource Include="GUI\Resource\Fonts\GangWonEdu\GangWonEdu_TeunTeun.ttf" />
+		<Resource Include="GUI\Resource\Fonts\lxgw_marker_gothic\LXGWMarkerGothic-Regular.ttf" />
+		<Resource Include="GUI\Resource\Fonts\MPlus1Code\MPLUS1Code-Bold.ttf" />
+		<Resource Include="GUI\Resource\Fonts\MPlus1Code\MPLUS1Code-ExtraLight.ttf" />
+		<Resource Include="GUI\Resource\Fonts\MPlus1Code\MPLUS1Code-Light.ttf" />
+		<Resource Include="GUI\Resource\Fonts\MPlus1Code\MPLUS1Code-Medium.ttf" />
+		<Resource Include="GUI\Resource\Fonts\MPlus1Code\MPLUS1Code-Regular.ttf" />
+		<Resource Include="GUI\Resource\Fonts\MPlus1Code\MPLUS1Code-SemiBold.ttf" />
+		<Resource Include="GUI\Resource\Fonts\MPlus1Code\MPLUS1Code-Thin.ttf" />
+		<Resource Include="GUI\Resource\Fonts\NanumSquareNeo\NanumSquareNeo-aLt.ttf" />
+		<Resource Include="GUI\Resource\Fonts\NanumSquareNeo\NanumSquareNeo-bRg.ttf" />
+		<Resource Include="GUI\Resource\Fonts\NanumSquareNeo\NanumSquareNeo-cBd.ttf" />
+		<Resource Include="GUI\Resource\Fonts\NanumSquareNeo\NanumSquareNeo-dEb.ttf" />
+		<Resource Include="GUI\Resource\Fonts\NanumSquareNeo\NanumSquareNeo-eHv.ttf" />
+		<Resource Include="GUI\Resource\Fonts\New_Amsterdam\NewAmsterdam-Regular.ttf" />
+		<Resource Include="GUI\Resource\Fonts\Roboto_Condensed\RobotoCondensed-Medium.ttf" />
+        <Resource Include="GUI\Resource\Fonts\Sarasa_UI_SC\SarasaUiSC-Bold.ttf" />
+		<Resource Include="GUI\Resource\Fonts\Sarasa_UI_SC\SarasaUiSC-ExtraLight.ttf" />
+		<Resource Include="GUI\Resource\Fonts\Sarasa_UI_SC\SarasaUiSC-Light.ttf" />
+		<Resource Include="GUI\Resource\Fonts\Sarasa_UI_SC\SarasaUiSC-Regular.ttf" />
+		<Resource Include="GUI\Resource\Fonts\Sarasa_UI_SC\SarasaUiSC-SemiBold.ttf" />
+		<Resource Include="GUI\Resource\Fonts\RocknRoll_One\RocknRollOne-Regular.ttf" />
+		<Resource Include="GUI\Resource\Images\MIDIConvert\B_MultiTask.png" />
+		<Resource Include="GUI\Resource\Images\MIDIConvert\B_Spanner.png" />
+		<Resource Include="GUI\Resource\Images\MIDIConvert\B_Start.png" />
+		<Resource Include="GUI\Resource\Images\vvvf-simulator.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Generation\Video\Fonts\DSEG14Modern-Italic.ttf" />
+		<EmbeddedResource Include="Generation\Video\Fonts\DSEG7Modern-Italic.ttf" />
+		<EmbeddedResource Include="Generation\Video\Fonts\FugazOne-Regular.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Generation\Audio\TrainSound\IrSample\sample6.wav" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="GUI\Resource\Images\MIDIConvert\B_Folder_Opend.png" />
+		<Resource Include="GUI\Resource\Images\MIDIConvert\B_MIDI_Document.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm3Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm3Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm3Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\CHMW3--12733.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm5Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm5Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm5Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm5Alt3.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm7Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm7Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm7Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm7Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm7Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm7Alt5.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm9Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm9Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm9Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm9Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm9Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm9Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm9Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm9Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm9Alt8.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm11Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm11Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm11Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm11Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm11Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm11Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm11Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm11Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm11Alt8.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm11Alt9.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm11Alt10.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm11Alt11.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm11Alt12.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm13Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm13Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm13Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm13Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm13Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm13Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm13Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm13Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm13Alt8.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm13Alt9.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm13Alt10.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm13Alt11.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm13Alt12.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm13Alt13.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt8.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt9.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt10.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt11.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt12.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt13.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt14.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt15.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt16.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt17.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt18.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt19.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt20.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt21.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt22.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm15Alt23.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm17Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm17Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm17Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm17Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm17Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm17Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm17Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm17Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm17Alt8.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm17Alt9.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm17Alt10.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm17Alt11.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm19Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm19Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm19Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm19Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm19Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm19Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm19Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm19Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm19Alt8.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm19Alt9.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm19Alt10.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm19Alt11.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm21Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm21Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm21Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm21Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm21Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm21Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm21Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm21Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm21Alt8.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm21Alt9.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm21Alt10.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm21Alt11.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm21Alt12.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm21Alt13.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Alt8.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Alt9.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Alt10.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Alt11.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Alt12.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Alt13.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm23Alt14.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt8.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt9.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt10.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt11.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt12.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt13.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt14.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt15.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt16.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt17.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt18.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt19.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm25Alt20.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm27Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm29Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm31Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2Chm33Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\Export.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm1Default.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm3Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm3Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm3Alt2.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm5Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm5Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm5Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm5Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm5Alt4.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm7Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm7Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm7Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm7Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm7Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm7Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm7Alt6.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm9Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm9Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm9Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm9Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm9Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm9Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm9Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm9Alt7.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm11Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm11Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm11Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm11Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm11Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm11Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm11Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm11Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm11Alt8.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm11Alt9.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm11Alt10.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Alt8.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Alt9.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Alt10.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Alt11.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Alt12.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Alt13.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm13Alt14.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt8.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt9.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt10.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt11.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt12.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt13.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt14.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt15.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt16.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm15Alt17.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt8.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt9.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt10.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt11.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt12.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt13.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt14.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt15.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt16.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt17.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt18.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm17Alt19.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt8.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt9.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt10.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt11.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt12.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt13.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt14.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt15.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt16.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt17.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt18.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt19.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt20.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt21.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt22.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt23.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt24.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm19Alt25.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt7.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt8.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt9.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt10.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt11.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt12.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt13.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt14.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt15.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt16.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt17.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt18.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt19.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt20.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt21.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3Chm21Alt22.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She21Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She21Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She21Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She21Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She21Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She21Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She21Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She19Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She19Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She19Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She19Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She19Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She19Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She19Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She17Alt6.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She17Alt5.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She17Alt4.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She17Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She17Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She17Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She17Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She15Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She15Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She15Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She15Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She13Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She13Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She13Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She13Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She11Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She11Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She11Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She11Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She7Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She7Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She9Alt3.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She9Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She9Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She9Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She5Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She5Alt2.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She5Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She3Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L2She3Default.bin" />
+
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3She1Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3She3Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3She3Alt1.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3She5Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3She7Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3She9Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3She11Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3She13Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3She15Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3She17Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3She19Default.bin" />
+		<EmbeddedResource Include="Vvvf\SwitchAngle\L3She21Default.bin" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="NAudio" Version="2.2.1" />
+		<PackageReference Include="OpenCvSharp4" Version="4.9.0.20240103" />
+		<PackageReference Include="OpenCvSharp4.runtime.win" Version="4.9.0.20240103" />
+		<PackageReference Include="System.Drawing.Common" Version="8.0.1" />
+		<PackageReference Include="System.IO.Ports" Version="8.0.0" />
+		<PackageReference Include="YamlDotNet" Version="15.1.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="avenue.core">
+			<HintPath>Package\NextMidi\avenue.core.dll</HintPath>
+		</Reference>
+		<Reference Include="avenue.filing">
+			<HintPath>Package\NextMidi\avenue.filing.dll</HintPath>
+		</Reference>
+		<Reference Include="nextmidi.data">
+			<HintPath>Package\NextMidi\nextmidi.data.dll</HintPath>
+		</Reference>
+		<Reference Include="nextmidi.dataelement">
+			<HintPath>Package\NextMidi\nextmidi.dataelement.dll</HintPath>
+		</Reference>
+		<Reference Include="nextmidi.dataelement.status">
+			<HintPath>Package\NextMidi\nextmidi.dataelement.status.dll</HintPath>
+		</Reference>
+		<Reference Include="nextmidi.filing.midi">
+			<HintPath>Package\NextMidi\nextmidi.filing.midi.dll</HintPath>
+		</Reference>
+		<Reference Include="nextmidi.filing.midi.chunk">
+			<HintPath>Package\NextMidi\nextmidi.filing.midi.chunk.dll</HintPath>
+		</Reference>
+		<Reference Include="nextmidi.filing.midi.midifile">
+			<HintPath>Package\NextMidi\nextmidi.filing.midi.midifile.dll</HintPath>
+		</Reference>
+		<Reference Include="nextmidi.midiport.bridge">
+			<HintPath>Package\NextMidi\nextmidi.midiport.bridge.dll</HintPath>
+		</Reference>
+		<Reference Include="nextmidi.midiport.core">
+			<HintPath>Package\NextMidi\nextmidi.midiport.core.dll</HintPath>
+		</Reference>
+		<Reference Include="nextmidi.midiport.input">
+			<HintPath>Package\NextMidi\nextmidi.midiport.input.dll</HintPath>
+		</Reference>
+		<Reference Include="nextmidi.midiport.input.core">
+			<HintPath>Package\NextMidi\nextmidi.midiport.input.core.dll</HintPath>
+		</Reference>
+		<Reference Include="nextmidi.midiport.output">
+			<HintPath>Package\NextMidi\nextmidi.midiport.output.dll</HintPath>
+		</Reference>
+		<Reference Include="nextmidi.midiport.output.core">
+			<HintPath>Package\NextMidi\nextmidi.midiport.output.core.dll</HintPath>
+		</Reference>
+		<Reference Include="nextmidi.time">
+			<HintPath>Package\NextMidi\nextmidi.time.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Properties\Settings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Properties\Settings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
+	</ItemGroup>
+
+</Project>
