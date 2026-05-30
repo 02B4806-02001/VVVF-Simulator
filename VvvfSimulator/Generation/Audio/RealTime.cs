@@ -254,7 +254,7 @@ namespace VvvfSimulator.Generation.Audio
             Param.SmoothedDeltaAmp += (Param.Delta_Amp - Param.SmoothedDeltaAmp) * Param.DeltaAmpFilterK * dt;
             // copy to limited_amp for modulation limits; can clamp here if needed
             double limited_amp = new_amp;
-            //limited_amp = Min(new_amp, 1.28 / GetChangingValue(0, 0.03, 60, 1.245, sin_freq, false)); //LIMIT LIMIT LIMIT
+            limited_amp = Min(new_amp, 1.28 / GetChangingValue(0, 0.03, 60, 1.245, sin_freq, false)); //LIMIT LIMIT LIMIT
 
             { //SZ16Z
                 double targetPulseWidth;
@@ -351,8 +351,8 @@ namespace VvvfSimulator.Generation.Audio
                 // Use unfiltered limited_amp for control to preserve slip dynamics
                 Control.SetAmp(limited_amp);
                 Control.SetUnlimitedAmp(new_amp*0.5+0.5);
-                double change_rate = Param.SmoothedFrequencyChangeRate + 26; //24
-                Control.SetRealBaseWaveFrequency(Control.GetBaseWaveFrequency() - Min(CopySign(Pow(Abs(change_rate), 1.4), change_rate), 0) * 0.2);
+                double change_rate = Param.SmoothedFrequencyChangeRate + 0; //24
+                Control.SetRealBaseWaveFrequency(Control.GetBaseWaveFrequency() - CopySign(Pow(Abs(change_rate), 0.3), change_rate) * 0.2);
 
                 // Keep control amplitude unfiltered; audio can reference Param.AudioAmpLpfPrev
                 Param.Amplitude = Param.FreeRunDt < -0.05 ? 0 : limited_amp;

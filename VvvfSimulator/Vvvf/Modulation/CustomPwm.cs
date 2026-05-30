@@ -1209,20 +1209,32 @@ namespace VvvfSimulator.Vvvf.Modulation
         private static (CustomPwm? Preset, double CurrentAmplitude) SelectL2Chm15Alt1(Model.Struct.Domain Domain)
         {
             double sin_freq = Domain.GetBaseWaveFrequency();
+            double real_freq = Domain.GetRealBaseWaveFrequency();
             double Amplitude = Domain.ElectricalState.BaseWaveAmplitude.Value;
             bool chm9k = false;
             double w5w3 = chm9k ? GetChangingValue(55, 1.243, 80, 1.215, sin_freq, true) : GetChangingValue(45, 1.245, 80, 1.222, sin_freq, true);
             // Return the chosen preset and the current amplitude to apply
-            if (sin_freq < 400.0 / 15.0)
+            if (real_freq < 400.0 / 15.0)
             {
-                return (Amplitude >= 0.31 ? L2Chm15Default : L2Chm15Alt15, Amplitude);
+                if (Amplitude < 0.07) return (L2Chm7Default, Amplitude);
+                if (Amplitude < 0.11) return (L2Chm11Alt11, Amplitude);
+                if (Amplitude < 0.31) return (L2Chm15Alt15, Amplitude);
+                if (Amplitude < 1.23) return (L2Chm15Default, Amplitude);
+                if (Amplitude < 1.245) return (L2Chm11Alt2, Amplitude);
+                return (L2Chm3Alt1, 1.245);
             }
-            if (sin_freq < 400.0 / 13.0)
+            if (real_freq < 400.0 / 13.0)
             {
-                return (L2Chm13Default, Amplitude);
+                if (Amplitude < 0.07) return (L2Chm5Default, Amplitude);
+                if (Amplitude < 0.11) return (L2Chm9Alt8, Amplitude);
+                if (Amplitude < 1.23) return (L2Chm13Default, Amplitude);
+                if (Amplitude < 1.245) return (L2Chm9Alt2, Amplitude);
+                return (L2Chm3Alt1, 1.245);
             }
-            if (sin_freq < 400.0 / 11.0 && !chm9k)
+            if (real_freq < 400.0 / 11.0 && !chm9k)
             {
+                if (Amplitude < 0.07) return (L2Chm5Default, Amplitude);
+                if (Amplitude < 0.11) return (L2Chm7Alt5, Amplitude);
                 if (Amplitude < 0.93) return (L2Chm11Alt9, Amplitude);
                 if (Amplitude < 1.05) return (L2Chm11Alt7, Amplitude);
                 if (Amplitude < 1.15) return (L2Chm11Alt3, Amplitude);
@@ -1231,7 +1243,7 @@ namespace VvvfSimulator.Vvvf.Modulation
                 if (Amplitude < 1.245) return (L2Chm7Alt2, Amplitude);
                 return (L2Chm3Alt1, 1.245);
             }
-            if (sin_freq < 400.0 / 9.0 && !chm9k)
+            if (real_freq < 400.0 / 9.0 && !chm9k)
             {
                 if (Amplitude < 0.07) return (L2Chm3Default, Amplitude);
                 if (Amplitude < 0.11) return (L2Chm7Alt5, Amplitude);
@@ -1242,12 +1254,12 @@ namespace VvvfSimulator.Vvvf.Modulation
                 if (Amplitude < 1.245) return (L2Chm3Alt1, Amplitude);
                 return (L2Chm3Alt1, 1.245);
             }
-            if (sin_freq < 400.0 / 11.0 && chm9k)
+            if (real_freq < 400.0 / 11.0 && chm9k)
             {
                 if (Amplitude < 0.63) return (L2Chm11Alt9, Amplitude);
                 return (L2Chm11Default, Amplitude);
             }
-            if (sin_freq < 400.0 / 9.0 && chm9k)
+            if (real_freq < 400.0 / 9.0 && chm9k)
             {
                 if (Amplitude < 0.05) return (L2Chm7Alt3, Amplitude);
                 if (Amplitude < 0.73) return (L2Chm9Alt8, Amplitude);
@@ -1258,7 +1270,7 @@ namespace VvvfSimulator.Vvvf.Modulation
                 if (Amplitude < 1.245) return (L2Chm3Alt1, Amplitude);
                 return (L2Chm3Alt1, 1.245);
             }
-            if (sin_freq < 400.0 / 7.0)
+            if (real_freq < 400.0 / 7.0)
             {
                 if (Amplitude < 0.07) return (L2Chm3Default, Amplitude);
                 if (Amplitude < 0.11) return (L2Chm5Alt3, Amplitude);
@@ -1270,16 +1282,16 @@ namespace VvvfSimulator.Vvvf.Modulation
                 if (Amplitude < 1.245) return (L2Chm3Alt1, Amplitude);
                 return (L2Chm3Alt1, 1.245);
             }
-            if (sin_freq < 400.0 / 5.0)
+            if (real_freq < 400.0 / 5.0)
             {
                 if (Amplitude < 0.10) return (L2Chm3Default, Amplitude);
                 if (Amplitude < 0.96) return (L2Chm5Alt3, Amplitude);
                 if (Amplitude < 1.12) return (L2Chm5Alt2, Amplitude);
                 if (Amplitude < w5w3) return (L2Chm5Alt1, Amplitude);
                 if (Amplitude < 1.245) return (L2Chm3Alt1, Amplitude);
-                return (L2Chm3Alt1, GetChangingValue_Sin(GetChangingValue_Sin(0.8, 79.97, 35, 79.6, Math.Abs(Param.SmoothedFrequencyChangeRate), true), 1.245, 80, 1.27, Domain.GetBaseWaveFrequency(), true));
+                return (L2Chm3Alt1, GetChangingValue_Sin(GetChangingValue_Sin(0.8, 79.97, 35, 79.6, Math.Abs(Param.SmoothedFrequencyChangeRate), true), 1.245, 80, 1.27, real_freq, true));
             }
-            if (sin_freq < 400.0)
+            if (real_freq < 400.0)
             {
                 if (Amplitude < 1.195) return (L2Chm3Default, Amplitude);
                 if (Amplitude < 1.265) return (L2Chm3Alt1, Amplitude);
