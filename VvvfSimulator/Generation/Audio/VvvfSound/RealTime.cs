@@ -45,7 +45,7 @@ namespace VvvfSimulator.Generation.Audio.VvvfSound
                 end_result = RealTimeFrequencyControl(Param.Control, Param, CalcCount * Dt);
                 if (end_result != -1) break;
 
-                filter.SetLowPassCutoff(3200.0, Dt);
+                filter.SetLowPassCutoff(2500.0, Dt);
                 filter.SetHighPassCutoff(400.0, Dt);
 
                 byte[] data = new byte[CalcCount];

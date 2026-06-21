@@ -1214,7 +1214,7 @@ namespace VvvfSimulator.Vvvf.Modulation
             bool chm9k = false;
             double w5w3 = chm9k ? GetChangingValue(55, 1.243, 80, 1.215, sin_freq, true) : GetChangingValue(45, 1.245, 80, 1.222, sin_freq, true);
             // Return the chosen preset and the current amplitude to apply
-            if (real_freq < 400.0 / 15.0)
+            if (real_freq < 390.0 / 15.0)
             {
                 if (Amplitude < 0.07) return (L2Chm7Default, Amplitude);
                 if (Amplitude < 0.11) return (L2Chm11Alt11, Amplitude);
@@ -1223,7 +1223,7 @@ namespace VvvfSimulator.Vvvf.Modulation
                 if (Amplitude < 1.245) return (L2Chm11Alt2, Amplitude);
                 return (L2Chm3Alt1, 1.245);
             }
-            if (real_freq < 400.0 / 13.0)
+            if (real_freq < 394.0 / 13.0)
             {
                 if (Amplitude < 0.07) return (L2Chm5Default, Amplitude);
                 if (Amplitude < 0.11) return (L2Chm9Alt8, Amplitude);
@@ -1231,7 +1231,7 @@ namespace VvvfSimulator.Vvvf.Modulation
                 if (Amplitude < 1.245) return (L2Chm9Alt2, Amplitude);
                 return (L2Chm3Alt1, 1.245);
             }
-            if (real_freq < 400.0 / 11.0 && !chm9k)
+            if (real_freq < 397.0 / 11.0 && !chm9k)
             {
                 if (Amplitude < 0.07) return (L2Chm5Default, Amplitude);
                 if (Amplitude < 0.11) return (L2Chm7Alt5, Amplitude);
