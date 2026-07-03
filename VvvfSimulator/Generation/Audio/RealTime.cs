@@ -203,9 +203,9 @@ namespace VvvfSimulator.Generation.Audio
             double a1, a2;
             //a1 = GetChangingValue(0.5, 1.6, GetChangingValue_Sin(60,0.9,110,0.8,sin_freq,true), 0.4, Model.Voltage/100, true); //bj5/13
             //a1 = GetChangingValue_Pow(0.2, 0.9, 0.9, 0.17, 2, Model.Voltage/100, true); //yongji
-            a1 = GetChangingValue_Pow(0, 10, 1.2, 0.8, 2, VideoSineAmplitude,true) * GetChangingValue_Sin(0, 8, 0.5, 1, VideoSineAmplitude, true); //A4
+            //a1 = GetChangingValue_Pow(0, 10, 1.2, 0.8, 2, VideoSineAmplitude,true) * GetChangingValue_Sin(0, 8, 0.5, 1, VideoSineAmplitude, true); //A4
             //a1 = GetChangingValue_Pow(0.4, 4, 1.0, 0.5, 0.3, VideoSineAmplitude, true); //01A03
-            //a1 = (VideoSineAmplitude < 1 ? GetChangingValue_Pow(0, 1, 0.4, 2, 0.6, VideoSineAmplitude, true) : GetChangingValue_Pow(1, 2, 1.1, 1.5, 0.3, VideoSineAmplitude, true)) * GetChangingValue_Pow(0.4, 1, 0.8, 0.5, 0.6, VideoSineAmplitude, true); //N1000
+            a1 = (VideoSineAmplitude < 1 ? GetChangingValue_Pow(0, 1, 0.4, 2, 0.6, VideoSineAmplitude, true) : GetChangingValue_Pow(1, 2, 1.1, 1.5, 0.3, VideoSineAmplitude, true)) * GetChangingValue_Pow(0.4, 1, 0.8, 0.5, 0.6, VideoSineAmplitude, true); //N1000
             a2 = GetChangingValue_Pow(0.3, 0.6, 0.9, 1.0, 0.3, VideoSineAmplitude,true); //N1000    ⬆️N1000 
             //a2 = GetChangingValue_Sin(20, 1.4, 110, 0.9, sin_freq, true); //bj5/13
             //a1 = GetChangingValue_Pow(0, 2, 1.15, 1, 3, VideoSineAmplitude, true); //03A01

@@ -10,9 +10,11 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM64 = Debug|ARM64
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|ARM64 = Release|ARM64
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
@@ -22,7 +24,11 @@ Global
 		{2280D58A-5E53-4572-AD2D-954DC471CDC6}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{2280D58A-5E53-4572-AD2D-954DC471CDC6}.Debug|x64.Build.0 = Debug|Any CPU
 		{2280D58A-5E53-4572-AD2D-954DC471CDC6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2280D58A-5E53-4572-AD2D-954DC471CDC6}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{2280D58A-5E53-4572-AD2D-954DC471CDC6}.Debug|ARM64.Build.0 = Debug|Any CPU
 		{2280D58A-5E53-4572-AD2D-954DC471CDC6}.Debug|x86.Build.0 = Debug|Any CPU
+		{2280D58A-5E53-4572-AD2D-954DC471CDC6}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{2280D58A-5E53-4572-AD2D-954DC471CDC6}.Release|ARM64.Build.0 = Release|Any CPU
 		{2280D58A-5E53-4572-AD2D-954DC471CDC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2280D58A-5E53-4572-AD2D-954DC471CDC6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2280D58A-5E53-4572-AD2D-954DC471CDC6}.Release|x64.ActiveCfg = Release|Any CPU
@@ -34,7 +40,11 @@ Global
 		{2E719228-DAC2-4385-BDFC-7D01F291B5F1}.Debug|x64.ActiveCfg = Debug|x64
 		{2E719228-DAC2-4385-BDFC-7D01F291B5F1}.Debug|x64.Build.0 = Debug|x64
 		{2E719228-DAC2-4385-BDFC-7D01F291B5F1}.Debug|x86.ActiveCfg = Debug|Win32
+		{2E719228-DAC2-4385-BDFC-7D01F291B5F1}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{2E719228-DAC2-4385-BDFC-7D01F291B5F1}.Debug|ARM64.Build.0 = Debug|ARM64
 		{2E719228-DAC2-4385-BDFC-7D01F291B5F1}.Debug|x86.Build.0 = Debug|Win32
+		{2E719228-DAC2-4385-BDFC-7D01F291B5F1}.Release|ARM64.ActiveCfg = Release|ARM64
+		{2E719228-DAC2-4385-BDFC-7D01F291B5F1}.Release|ARM64.Build.0 = Release|ARM64
 		{2E719228-DAC2-4385-BDFC-7D01F291B5F1}.Release|Any CPU.ActiveCfg = Release|x64
 		{2E719228-DAC2-4385-BDFC-7D01F291B5F1}.Release|Any CPU.Build.0 = Release|x64
 		{2E719228-DAC2-4385-BDFC-7D01F291B5F1}.Release|x64.ActiveCfg = Release|x64
