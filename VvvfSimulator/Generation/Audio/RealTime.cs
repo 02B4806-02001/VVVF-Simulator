@@ -254,7 +254,7 @@ namespace VvvfSimulator.Generation.Audio
             Param.SmoothedDeltaAmp += (Param.Delta_Amp - Param.SmoothedDeltaAmp) * Param.DeltaAmpFilterK * dt;
             // copy to limited_amp for modulation limits; can clamp here if needed
             double limited_amp = new_amp;
-            limited_amp = Min(new_amp, 1.28 / GetChangingValue(0, 0.03, 60, 1.245, sin_freq, false)); //LIMIT LIMIT LIMIT
+            //limited_amp = Min(new_amp, 1.28 / GetChangingValue(0, 0.03, 60, 1.245, sin_freq, false)); //LIMIT LIMIT LIMIT
 
             { //SZ16Z
                 double targetPulseWidth;

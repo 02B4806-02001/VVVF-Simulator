@@ -267,10 +267,10 @@ namespace VvvfSimulator.Generation.Audio.TrainSound
             double slipNorm = Math.Min(1.0, Math.Abs(Control.Motor.Parameter.Ωsl) / (Math.Abs(Control.Motor.Parameter.Ωe) + 1e-6));
             double surroundDepth = 0.5 + 0.35 * currentNorm + 0.24 * torqueNorm + 0.24 * slipNorm;
 
-            double mainSignal = (motorPwmSound * PWMamp * 1.5 + inv * 0.3 * invamp + 4 * (motorSound + gearSound) + jointamp * 0.3 * joint) * Math.Pow(10, Data.TotalVolumeDb);
+            double mainSignal = (motorPwmSound * PWMamp * 1.5 + inv * 0.3 * invamp + 3 * (motorSound + gearSound) + jointamp * 0.3 * joint) * Math.Pow(10, Data.TotalVolumeDb);
             double whiteSignal = (whitefamp * 0.3 * white + _sd*0) * Math.Pow(10, Data.TotalVolumeDb);
             // apply a simple first-order low-pass filter to smooth the surround signal
-            double rawSurround = (inv * invamp * 30 + (motorSound + gearSound) * 15 + white * 0.04 + motorPwmSound * PWMamp2 * 3 + jointamp * 6 * joint) * surroundDepth;
+            double rawSurround = (inv * invamp * 20 + (motorSound + gearSound) * 15 + white * 0.04 + motorPwmSound * PWMamp2 * 2 + jointamp * 6 * joint) * surroundDepth;
             double surroundAlpha = 0.97; // tuning: closer to 1 = smoother
             _surroundLpfPrev = surroundAlpha * _surroundLpfPrev + (1.0 - surroundAlpha) * rawSurround;
             double surroundSignal = _surroundLpfPrev * Math.Pow(10, Data.TotalVolumeDb);

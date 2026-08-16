@@ -1494,12 +1494,12 @@ namespace VvvfSimulator.Vvvf.Modulation
             if (sin_freq < mf2 / 9.0)
             {
                 if (Amplitude < 0.880) return (L2Chm9Alt5, Amplitude);
-                if (Amplitude < 0.970) return (L2Chm9Alt6, Amplitude);
+                if (Amplitude < 1.030) return (L2Chm9Alt6, Amplitude);
                 if (Amplitude < 1.110) return (L2Chm9Alt3, Amplitude);
                 if (Amplitude <  a75 ) return (L2Chm9Alt2, Amplitude);
                 if (Amplitude <  a53 ) return (L2Chm7Alt2, Amplitude);
                 if (Amplitude < 1.245) return (L2Chm5Alt1, Amplitude);
-                return (L2Chm5Alt1, 1.245);
+                return (L2Chm3Alt1, 1.245);
             }
             if (sin_freq < mf2 / 7.0)
             {
