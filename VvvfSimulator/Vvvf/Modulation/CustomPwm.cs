@@ -574,7 +574,7 @@ namespace VvvfSimulator.Vvvf.Modulation
                         11 => Alternative switch
                         {
                             PulseAlternative.Default => L2She11Default,
-                            PulseAlternative.Alt1 => L2She11Alt1,
+                            PulseAlternative.Alt1 => WrapSelectedPreset(SelectL2She11Alt1(Domain)),
                             PulseAlternative.Alt2 => L2She11Alt2,
                             PulseAlternative.Alt3 => L2She11Alt3,
                             _ => null,
@@ -1365,6 +1365,132 @@ namespace VvvfSimulator.Vvvf.Modulation
 
             return (L2She3Alt1, 1.274);
         }
+        private static CustomPwm CreateL2She11OffsetPreset(double Amplitude)
+        {
+            double a1 = GetChangingValue_Pow(0, 2, 0.4, 0.1, 0.8, Amplitude, true);
+            double a2 = GetChangingValue_Pow(0, 2, 0.4, 0, 0.8, Amplitude, true);
+            double a3 = GetChangingValue_Pow(0, 2, 0.4, 0, 0.8, Amplitude, true);
+            double a4 = GetChangingValue_Pow(0, 3, 0.4, -0.1, 0.8, Amplitude, true);
+            double a5 = GetChangingValue_Pow(0, -6, 0.4, 0, 0.8, Amplitude, true);
+            int Index = (int)(1000 * Amplitude) + 1;
+
+            return new CustomPwm
+            {
+                SwitchCount = 9,
+                ModulationIndexDivision = 0,
+                MinimumModulationIndex = Amplitude,
+                BlockCount = 1,
+                StartLevelTable = [2],
+                SwitchAngleTable = [
+                    ((SwitchAngles._5Alpha_SHE[Index, 0] + a1) * MyMath.M_PI_180, 0),
+                    ((SwitchAngles._5Alpha_SHE[Index, 1] + a2) * MyMath.M_PI_180, 2),
+                    ((SwitchAngles._5Alpha_SHE[Index, 2] + a3) * MyMath.M_PI_180, 0),
+                    ((SwitchAngles._5Alpha_SHE[Index, 3] + a4) * MyMath.M_PI_180, 2),
+                    ((SwitchAngles._5Alpha_SHE[Index, 4] + a5) * MyMath.M_PI_180, 0),
+                    (MyMath.M_PI_2, 2), (MyMath.M_PI_2, 0),
+                    (MyMath.M_PI_2, 2), (MyMath.M_PI_2, 0)
+                ]
+            };
+        }
+
+        private static CustomPwm CreateL2She7OffsetPreset(double Amplitude)
+        {
+            double a1 = GetChangingValue_Pow(0, 2, 0.5, 0, 0.8, Amplitude, true);
+            double a2 = GetChangingValue_Pow(0, -2, 0.5, 0, 0.8, Amplitude, true);
+            double a3 = GetChangingValue_Pow(0, -4, 0.5, 0, 0.8, Amplitude, true);
+            int Index = (int)(1000 * Amplitude) + 1;
+
+            return new CustomPwm
+            {
+                SwitchCount = 9,
+                ModulationIndexDivision = 0,
+                MinimumModulationIndex = Amplitude,
+                BlockCount = 1,
+                StartLevelTable = [0],
+                SwitchAngleTable = [
+                    ((SwitchAngles._3Alpha[Index, 0] + a1) * MyMath.M_PI_180, 2),
+                    ((SwitchAngles._3Alpha[Index, 1] + a2) * MyMath.M_PI_180, 0),
+                    ((SwitchAngles._3Alpha[Index, 2] + a3) * MyMath.M_PI_180, 2),
+                    (MyMath.M_PI_2, 0), (MyMath.M_PI_2, 2),
+                    (MyMath.M_PI_2, 0), (MyMath.M_PI_2, 2),
+                    (MyMath.M_PI_2, 0), (MyMath.M_PI_2, 2)
+                ]
+            };
+        }
+
+        private static (CustomPwm? Preset, double CurrentAmplitude) SelectL2She11Alt1(Model.Struct.Domain Domain)
+        {
+            double sin_freq = Domain.GetBaseWaveFrequency();
+            double real_freq = Domain.GetRealBaseWaveFrequency();
+            double Amplitude = Domain.ElectricalState.BaseWaveAmplitude.Value;
+            bool accel = !Domain.IsBraking();
+            double amp = Amplitude > 1.269 ? 1.269 : Amplitude;
+            double She7amp = GetChangingValue_Pow(60, 1.12, 80, 1.06, 2, sin_freq, true);
+            double She5amp = GetChangingValue_Pow(68, 1.203, 82, 1.14, 1.6, sin_freq, true);
+            double She3amp = GetChangingValue_Pow(65, 1.269, 100, 1.257, 0.8, sin_freq, true);
+
+            if (sin_freq < (accel ? 14.6 : 13))
+            {
+                if (amp < 1.03) return (CreateL2She11OffsetPreset(amp), amp);
+                if (amp < She7amp) return (CreateL2She7OffsetPreset(amp), amp);
+                if (amp < She5amp) return (L2She5Alt2, amp);
+                if (amp < She3amp) return (L2She3Alt1, amp);
+                return (L2She3Alt1, 1.274);
+            }
+            if (sin_freq < (accel ? 26.3 : 24.2))
+            {
+                if (amp < 1.03) return (CreateL2She11OffsetPreset(amp), amp);
+                if (amp < She7amp) return (CreateL2She7OffsetPreset(amp), amp);
+                if (amp < She5amp) return (L2She5Alt2, amp);
+                if (amp < She3amp) return (L2She3Alt1, amp);
+                return (L2She3Alt1, 1.274);
+            }
+            if (sin_freq < (accel ? 36.2 : 34.5))
+            {
+                if (amp < 1.03) return (CreateL2She11OffsetPreset(amp), amp);
+                if (amp < She7amp) return (CreateL2She7OffsetPreset(amp), amp);
+                if (amp < She5amp) return (L2She5Alt2, amp);
+                if (amp < She3amp) return (L2She3Alt1, amp);
+                return (L2She3Alt1, 1.274);
+            }
+            if (sin_freq < (accel ? 54 : 52))
+            {
+                if (amp < 1.03) return (CreateL2She11OffsetPreset(amp), amp);
+                if (amp < She7amp) return (CreateL2She7OffsetPreset(amp), amp);
+                if (amp < She5amp) return (L2She5Alt2, amp);
+                return (L2She3Alt1, amp < 1.24 ? amp : 1.24);
+            }
+            if (sin_freq < (accel ? 60 : 58))
+            {
+                if (amp < She7amp) return (CreateL2She7OffsetPreset(amp), amp);
+                if (amp < She5amp) return (L2She5Alt2, amp);
+                return (L2She3Alt1, amp < 1.24 ? amp : 1.24);
+            }
+            if (real_freq < 79.6)
+            {
+                if (amp < She5amp) return (L2She5Alt2, amp);
+                return (L2She3Alt1, amp < 1.24 ? amp : 1.24);
+            }
+            if (real_freq < 80)
+            {
+                if (amp < She5amp) return (L2She5Alt2, amp);
+                if (amp < 1.24) return (L2She3Alt1, amp);
+                return (L2She3Alt1, GetChangingValue(79.6, 1.24, 80, 1.27, real_freq, true));
+            }
+            if (sin_freq < 100)
+            {
+                if (amp < She5amp) return (L2She5Alt2, amp);
+                if (amp < She3amp) return (L2She3Alt1, amp);
+                return (L2She3Alt1, 1.274);
+            }
+            if (sin_freq < 300)
+            {
+                if (amp < She3amp) return (L2She3Alt1, amp);
+                return (L2She3Alt1, 1.274);
+            }
+
+            return (L2She3Alt1, 1.274);
+        }
         private static (CustomPwm? Preset, double CurrentAmplitude) SelectL2Chm11Alt3(Model.Struct.Domain Domain)
         {
             double sin_freq = Domain.GetBaseWaveFrequency();
@@ -1378,38 +1504,38 @@ namespace VvvfSimulator.Vvvf.Modulation
                 if (Amplitude < 0.93) return (L2Chm11Alt9, Amplitude);
                 if (Amplitude < 1.06) return (L2Chm11Alt7, Amplitude);
                 if (Amplitude < 1.10) return (L2Chm11Alt3, Amplitude);
-                if (Amplitude < 1.245) return (L2Chm11Default, Amplitude);
-                return (L2Chm11Default, 1.245);
+                if (Amplitude < 1.243) return (L2Chm11Default, Amplitude);
+                return (L2Chm11Default, 1.243);
             }
             if (sin_freq < 500.0 / 9.0)
             {
                 if (Amplitude < 0.73) return (L2Chm9Alt8, Amplitude);
-                if (Amplitude < 1.245) return (L2Chm9Default, Amplitude);
-                return (L2Chm9Default, 1.245);
+                if (Amplitude < 1.243) return (L2Chm9Default, Amplitude);
+                return (L2Chm9Default, 1.243);
             }
             if (sin_freq < 500.0 / 7.0 - a75 && accel)
             {
-                if (Amplitude < 1.245) return (L2Chm7Default, Amplitude);
-                return (L2Chm7Default, 1.245);
+                if (Amplitude < 1.243) return (L2Chm7Default, Amplitude);
+                return (L2Chm7Default, 1.243);
             }
             if (sin_freq < 500.0 / 7.0 - a53 && accel)
             {
-                if (Amplitude < 1.245) return (L2Chm7Default, Amplitude);
-                return (L2Chm5Default, 1.245);
+                if (Amplitude < 1.243) return (L2Chm7Default, Amplitude);
+                return (L2Chm5Default, 1.243);
             }
             if (sin_freq < 500.0 / 7.0 && accel)
             {
-                if (Amplitude < 1.245) return (L2Chm7Default, Amplitude);
-                return (L2Chm3Default, GetChangingValue(500.0/7.0-a53, 1.245, 500.0/7.0, 1.27, sin_freq, true));
+                if (Amplitude < 1.243) return (L2Chm7Default, Amplitude);
+                return (L2Chm3Default, GetChangingValue(500.0/7.0-a53, 1.243, 500.0/7.0, 1.27, sin_freq, true));
             }
             if (sin_freq < 500.0 / 7.0 && !accel)
             {
-                if (Amplitude < 1.245) return (L2Chm7Default, Amplitude);
-                return (L2Chm3Default, 1.245);
+                if (Amplitude < 1.243) return (L2Chm7Default, Amplitude);
+                return (L2Chm3Default, 1.243);
             }
             if (sin_freq < 500.0 / 5.0)
             {
-                if (Amplitude < 1.245) return (L2Chm5Default, Amplitude);
+                if (Amplitude < 1.243) return (L2Chm5Default, Amplitude);
                 if (Amplitude < 1.265) return (L2Chm3Default, Amplitude);
                 return (L2She3Alt1, 1.274);
             }
@@ -1430,12 +1556,13 @@ namespace VvvfSimulator.Vvvf.Modulation
             if (sin_freq < 500.0 / 9.0)
             {
                 if (Amplitude < 0.73) return (L2Chm9Alt8, Amplitude);
-                if (Amplitude < 1.246) return (L2Chm9Default, Amplitude);
+                if (Amplitude < 1.237) return (L2Chm9Default, Amplitude);
+                if (Amplitude < 1.246) return (L2Chm5Default, Amplitude);
                 return (L2Chm5Default, 1.246);
             }
             if (sin_freq < 500.0 / 7.0 && accel)
             {
-                if (Amplitude >= 1.246 && sin_freq < 60.5) return (L2Chm5Default, 1.246);
+                if (Amplitude >= 1.239 && sin_freq < 60.5) return (L2Chm5Default, Math.Min(Amplitude, 1.246));
                 return (L2Chm7Default, Amplitude > 1.246 ? 1.246 : Amplitude);
             }
             if (sin_freq < 500.0 / 7.0 && !accel)

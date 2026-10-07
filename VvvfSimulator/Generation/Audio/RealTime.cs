@@ -203,12 +203,12 @@ namespace VvvfSimulator.Generation.Audio
             double a1, a2;
             //a1 = GetChangingValue(0.5, 1.6, GetChangingValue_Sin(60,0.9,110,0.8,sin_freq,true), 0.4, Model.Voltage/100, true); //bj5/13
             //a1 = GetChangingValue_Pow(0.2, 0.9, 0.9, 0.17, 2, Model.Voltage/100, true); //yongji
-            //a1 = GetChangingValue_Pow(0, 10, 1.2, 0.8, 2, VideoSineAmplitude,true) * GetChangingValue_Sin(0, 8, 0.5, 1, VideoSineAmplitude, true); //A4
+            a1 = GetChangingValue_Pow(0, 12, 1.2, 0.8, 2, VideoSineAmplitude,true) * GetChangingValue_Sin(0, 8, 0.5, 1, VideoSineAmplitude, true); //A4
             //a1 = GetChangingValue_Pow(0.4, 4, 1.0, 0.5, 0.3, VideoSineAmplitude, true); //01A03
-            a1 = (VideoSineAmplitude < 1 ? GetChangingValue_Pow(0, 1, 0.4, 2, 0.6, VideoSineAmplitude, true) : GetChangingValue_Pow(1, 2, 1.1, 1.5, 0.3, VideoSineAmplitude, true)) * GetChangingValue_Pow(0.4, 1, 0.8, 0.5, 0.6, VideoSineAmplitude, true); //N1000
+            //a1 = (VideoSineAmplitude < 1 ? GetChangingValue_Pow(0, 1, 0.4, 2, 0.6, VideoSineAmplitude, true) : GetChangingValue_Pow(1, 2, 1.1, 1.5, 0.3, VideoSineAmplitude, true)) * GetChangingValue_Pow(0.4, 1, 0.8, 0.5, 0.6, VideoSineAmplitude, true); //N1000
             a2 = GetChangingValue_Pow(0.3, 0.6, 0.9, 1.0, 0.3, VideoSineAmplitude,true); //N1000    ⬆️N1000 
             //a2 = GetChangingValue_Sin(20, 1.4, 110, 0.9, sin_freq, true); //bj5/13
-            //a1 = GetChangingValue_Pow(0, 2, 1.15, 1, 3, VideoSineAmplitude, true); //03A01
+        	//a1 = GetChangingValue_Pow(0, 1.8, 1.15, 1, 3, VideoSineAmplitude, true); //03A01
             //a1 = 1;
             //a2 = 1 * GetChangingValue_Pow(0.3, 1, 2, 4, 2, VideoSineAmplitude, true); //小以豆
             //a1 = 3;
@@ -221,7 +221,7 @@ namespace VvvfSimulator.Generation.Audio
             double rawDelta;
             double abs_delta_amp;
             rawDelta = new_amp - currentAmp;
-            abs_delta_amp = ((60 * Pow(Abs(rawDelta), 4) + 85 * Pow(Abs(rawDelta), 2) + 8 * Abs(rawDelta)) * GetChangingValue_Sin(0, 8, 0.3, 1, VideoSineAmplitude, true)) * dt; //amp响应更快 例：西门子IGBT程序
+            abs_delta_amp = (60 * Pow(Abs(rawDelta), 4) + 100 * Pow(Abs(rawDelta), 2) + 8 * Abs(rawDelta)) * GetChangingValue_Sin(0, 6, 0.3, 1, VideoSineAmplitude, true) * dt; //amp响应更快 例：西门子IGBT程序
             //abs_delta_amp = (4 * Pow(Abs(rawDelta), 1.6) + 5 * Pow(Abs(rawDelta), 0.9)) * dt; //amp变化更均匀 例：阿尔斯通Onix程序 01A03
             double delta_amp = rawDelta >= 0 ? abs_delta_amp : -abs_delta_amp;
             Param.DAmp_dt = delta_amp / (dt > 0 ? dt : 1e-6);
@@ -254,7 +254,7 @@ namespace VvvfSimulator.Generation.Audio
             Param.SmoothedDeltaAmp += (Param.Delta_Amp - Param.SmoothedDeltaAmp) * Param.DeltaAmpFilterK * dt;
             // copy to limited_amp for modulation limits; can clamp here if needed
             double limited_amp = new_amp;
-            //limited_amp = Min(new_amp, 1.28 / GetChangingValue(0, 0.03, 60, 1.245, sin_freq, false)); //LIMIT LIMIT LIMIT
+            limited_amp = Min(new_amp, 1.28 / GetChangingValue(0, 0.03, 60, 1.245, sin_freq, false)); //LIMIT LIMIT LIMIT
 
             { //SZ16Z
                 double targetPulseWidth;
